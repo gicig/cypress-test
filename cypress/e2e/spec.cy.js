@@ -9,12 +9,12 @@ describe('spec', () => {
       for (let item of items) {
         cy.intercept('GET', '/' + item).as(item);
       }
-
-      for (let item of items) {
-        cy.wait('@' + item).then((interception) => {
-          expect(interception.statusCode).to.eq(200);
-        });
-      }
     });
+
+    for (let item of items) {
+      cy.wait('@' + item).then((interception) => {
+        expect(interception.statusCode).to.eq(200);
+      });
+    }
   })
 })
